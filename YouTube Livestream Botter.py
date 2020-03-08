@@ -5,7 +5,6 @@ import threading
 import time
 from queue import Queue
 import platform
-from html5print import HTMLBeautifier
 import re
 
 import requests
@@ -34,23 +33,6 @@ url = "https://m.youtube.com/watch?v=" + token
 url2 = "https://s.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn=AiWtf2fjIwVS2MeQ&docid=" + token + \
     "&ver=2&cmt=7926.045&ei=igGSXce3IM2NgAfasp-ABg&fmt=133&fs=0&rt=1096.007&of=L_224b5BokWsQ5UWgAws_w&euri&lact=2837&live=dvr&cl=271684942&state=playing&vm=CAEQABgEKhhJc0gwZ2w0QmFfbTBWSXlWNm9ITmRRPT0&volume=100&c=MWEB&cver=2.20190928.07.00&cplayer=UNIPLAYER&cbrand=apple&cbr=Safari%20Mobile&cbrver=12.1.15E148&cmodel=iphone&cos=iPhone&cosver=12_2&cplatform%20=MOBILE&delay=5&hl=ru_RU&cr=DE&rtn=1396&afmt=140&lio=1556394045.182&idpj=&ldpj=&rti=1096&muted=0&st=7626.045&et=7926.045 "
 
-def liveviewCounter(video_tokenID):
-    liveviewURL = 'https://www.youtube.com/watch?v=' + video_tokenID
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'
-    }
-
-    scrape = requests.get(liveviewURL, headers=headers, timeout=10)
-    beautify = HTMLBeautifier.beautify(scrape.text).splitlines()
-
-    try:
-        findviews = beautify.index('                      "videoViewCountRenderer": {')
-        removeChars = re.sub('[^0-9]', '', beautify[findviews+3])
-    except:
-        pass
-
-    return removeChars
 
 class main(object):
     def __init__(self):
@@ -66,7 +48,6 @@ class main(object):
                 os.system(clear)
                 print(Fore.LIGHTCYAN_EX + intro + Fore.LIGHTMAGENTA_EX)
                 print(Fore.LIGHTCYAN_EX + f"Botted: {self.botted}")
-                print(Fore.LIGHTCYAN_EX + f"Livezuschauer: {liveviewCounter(token)}")
                 for i in range(len(self.printing) - 10, len(self.printing)):
                     try:
                         print(self.printing[i])
