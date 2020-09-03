@@ -127,14 +127,6 @@ def bot():
         except:
             pass
 
-def viewCount():
-    while True:
-        r = requests.get(f'https://www.youtube.com/watch?v={token}')
-#        open('out.txt', 'w+').write(r.text)
-        print(r.text)
-        #print(r.text.split('''"view-count style-scope yt-view-count-renderer">''')[1].split('<')[0])
-        time.sleep(5)
-
 maxthreads = int(input("How many Threads? Recommended: 500 - 1000\n"))
 
 threading.Thread(target=a.printservice).start()
@@ -144,4 +136,3 @@ while num < maxthreads:
     num += 1
     threading.Thread(target=bot).start()
 threading.Thread(target=bot).start()
-viewCount()
