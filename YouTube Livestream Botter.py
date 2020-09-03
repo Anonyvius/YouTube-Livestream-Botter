@@ -58,7 +58,7 @@ class main(object):
     def printservice(self):  # print screen
         while True:
             if True:
-                #os.system(clear)
+                os.system(clear)
                 print(Fore.LIGHTCYAN_EX + intro + Fore.LIGHTMAGENTA_EX)
                 print(Fore.LIGHTCYAN_EX + f"Botted:{self.botted}\n")
                 for i in range(len(self.printing) - 10, len(self.printing)):
@@ -126,6 +126,7 @@ def bot():
             a.botted += 1
         except:
             pass
+
 
 maxthreads = int(input("How many Threads? Recommended: 500 - 1000\n"))
 
